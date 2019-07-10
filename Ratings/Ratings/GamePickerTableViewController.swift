@@ -1,5 +1,5 @@
 //
-//  PlayerDetailsTableViewController.swift
+//  GamePickerTableViewController.swift
 //  Ratings
 //
 //  Created by Mykhailo Bondarenko on 7/10/19.
@@ -8,29 +8,28 @@
 
 import UIKit
 
-class PlayerDetailsTableViewController: UITableViewController {
+class GamePickerTableViewController: UITableViewController {
 
     // MARK: - Properties
-    var player: Player?
+    var games = [
+        "Angry Birds",
+        "Chess",
+        "Russian Roulette",
+        "Spin the Bottle",
+        "Texas Hold'em Poker",
+        "Tic-Tac-Toe"
+    ]
     
-    var game: String = "Chess" {
+    var selectedGame: String? {
         didSet {
-            detailLabel.text = game
+            if let selectedGame = selectedGame,
+                let index = games.index(of: selectedGame) {
+                selectedGameIndex = index
+            }
         }
     }
     
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var nameTextField: UITextField!
-    
-    // MARK: - Initializers
-    required init?(coder aDecoder: NSCoder) {
-        print("init PlayerDetailsViewController")
-        super.init(coder: aDecoder)
-    }
-    
-    deinit {
-        print("deinit PlayerDetailsViewController")
-    }
+    var selectedGameIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,35 +39,45 @@ class PlayerDetailsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return games.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath)
+
+        cell.textLabel?.text = games[indexPath.row]
+        
+        if indexPath.row == selectedGameIndex {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
 
         return cell
     }
-    */
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            nameTextField.becomeFirstResponder()
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let index = selectedGameIndex {
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+            cell?.accessoryType = .none
         }
+        selectedGame = games[indexPath.row]
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
     }
 
     /*
@@ -108,26 +117,16 @@ class PlayerDetailsTableViewController: UITableViewController {
 
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SavePlayerDetail", let playerName = nameTextField.text {
-            player = Player(name: playerName, game: game, rating: 1)
+        guard segue.identifier == "SaveSelectedGame",
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+                return
         }
-        if segue.identifier == "PickGame",
-            let gamePickerTableViewController = segue.destination as? GamePickerTableViewController {
-            gamePickerTableViewController.selectedGame = game
-        }
-    }
-    
-    // MARK: - IBActions
         
-        @IBAction func unwindWithSelectedGame(segue: UIStoryboardSegue) {
-            if let gamePickerTableViewController = segue.source as? GamePickerTableViewController,
-                let selectedGame = gamePickerTableViewController.selectedGame {
-                game = selectedGame
-            }
-        }
+        let index = indexPath.row
+        selectedGame = games[index]
+    }
 
 
 }

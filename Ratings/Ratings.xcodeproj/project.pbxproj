@@ -18,6 +18,7 @@
 		F3B063BA22D57EDB00510BB6 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B063B922D57EDB00510BB6 /* PlayerCell.swift */; };
 		F3B063BC22D5823700510BB6 /* PlayerDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B063BB22D5823700510BB6 /* PlayerDetailsTableViewController.swift */; };
 		F3B063BE22D5880200510BB6 /* GamePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B063BD22D5880200510BB6 /* GamePickerTableViewController.swift */; };
+		F3B063C122D58B0C00510BB6 /* Players.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B063BF22D58B0C00510BB6 /* Players.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F3B063B922D57EDB00510BB6 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		F3B063BB22D5823700510BB6 /* PlayerDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsTableViewController.swift; sourceTree = "<group>"; };
 		F3B063BD22D5880200510BB6 /* GamePickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePickerTableViewController.swift; sourceTree = "<group>"; };
+		F3B063C022D58B0C00510BB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Ratings/Base.lproj/Players.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				F3B063B322D57BF200510BB6 /* PlayersTableViewController.swift */,
 				F3B063BB22D5823700510BB6 /* PlayerDetailsTableViewController.swift */,
 				F3B063BD22D5880200510BB6 /* GamePickerTableViewController.swift */,
+				F3B063BF22D58B0C00510BB6 /* Players.storyboard */,
 				F3B063A522D5781D00510BB6 /* Main.storyboard */,
 				F3B063B922D57EDB00510BB6 /* PlayerCell.swift */,
 				F3B063B522D57C1A00510BB6 /* Player.swift */,
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3B063AC22D5781E00510BB6 /* LaunchScreen.storyboard in Resources */,
+				F3B063C122D58B0C00510BB6 /* Players.storyboard in Resources */,
 				F3B063A922D5781E00510BB6 /* Assets.xcassets in Resources */,
 				F3B063A722D5781D00510BB6 /* Main.storyboard in Resources */,
 			);
@@ -181,6 +185,14 @@
 				F3B063AB22D5781E00510BB6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F3B063BF22D58B0C00510BB6 /* Players.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3B063C022D58B0C00510BB6 /* Base */,
+			);
+			name = Players.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

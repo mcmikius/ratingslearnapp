@@ -100,6 +100,10 @@ class PlayersTableViewController: UITableViewController {
     }
     
     @IBAction func savePlayerDetail(_ segue: UIStoryboardSegue) {
+        guard let playerDetailsTableViewController = segue.source as? PlayerDetailsTableViewController, let player = playerDetailsTableViewController.player else { return }
+        players.append(player)
+        let indexPath = IndexPath(row: players.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 
 }

@@ -10,6 +10,9 @@ import UIKit
 
 class PlayerDetailsTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    var player: Player?
+    
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -86,14 +89,15 @@ class PlayerDetailsTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "SavePlayerDetail", let playerName = nameTextField.text {
+            player = Player(name: playerName, game: "Chess", rating: 1)
+        }
     }
-    */
+
 
 }

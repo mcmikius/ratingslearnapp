@@ -166,7 +166,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="eiB-vn-34c">
                             <connections>
-                                <segue destination="E36-2t-yV0" kind="unwind" unwindAction="savePlayerDetail:" id="GEq-wm-wWc"/>
+                                <segue destination="E36-2t-yV0" kind="unwind" identifier="SavePlayerDetail" unwindAction="savePlayerDetail:" id="GEq-wm-wWc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

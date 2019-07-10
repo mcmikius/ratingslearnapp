@@ -1,5 +1,5 @@
 //
-//  PlayersTableViewController.swift
+//  PlayerDetailsTableViewController.swift
 //  Ratings
 //
 //  Created by Mykhailo Bondarenko on 7/10/19.
@@ -8,10 +8,7 @@
 
 import UIKit
 
-class PlayersTableViewController: UITableViewController {
-    
-    // MARK: - Properties
-    var players = SampleData.generatePlayersData()
+class PlayerDetailsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,29 +24,23 @@ class PlayersTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return players.count
+        return 0
     }
 
-
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        let player = players[indexPath.row]
-        cell.player = player
-        
+        // Configure the cell...
 
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -95,11 +86,5 @@ class PlayersTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func cancelToPlayersViewController(_ segue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func savePlayerDetail(_ segue: UIStoryboardSegue) {
-    }
 
 }

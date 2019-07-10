@@ -10,6 +10,9 @@ import UIKit
 
 class PlayerDetailsTableViewController: UITableViewController {
 
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +44,12 @@ class PlayerDetailsTableViewController: UITableViewController {
         return cell
     }
     */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            nameTextField.becomeFirstResponder()
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
